@@ -37,13 +37,18 @@ class GitHubSeachViewReactor: Reactor {
         case .updateQuery(let query):
             return Observable.concat([
                 Observable.just(Mutation.setQuery(query)),
-                
+                self.serach(query: query, page: 1)
+                    .takeUntil(self.action.filter(isUpdateQueryAction))
+                    .map { Mutation.setRepos($0, nextPage: $1) }
             ])
         case .loadNextPage:
             guard !self.currentState.isLoadingNextPage else { return Observable.empty() }
             guard let page = self.currentState.nextPage else { return Observable.empty() }
             return Observable.concat([
                     Observable.just(Mutation.setLoadingNextPage(true)),
+                    self.serach(query: self.currentState.quary, page: page)
+                        .takeUntil(self.action.filter(isUpdateQueryAction))
+                        .map { Mutation.appendRepos($0, nextPage: $1) },
                     Observable.just(Mutation.setLoadingNextPage(false))
                 ])
         }
