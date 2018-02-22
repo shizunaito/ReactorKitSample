@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let navigationController = self.window?.rootViewController as! UINavigationController
         let viewController = navigationController.viewControllers.first as! GitHubSearchViewController
-        viewController.reactor = GitHubSeachViewReactor()
+        viewController.reactor = GitHubSeachViewReactor(gitHubService: GitHubService())
         return true
     }
 

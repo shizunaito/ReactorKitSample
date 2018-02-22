@@ -31,13 +31,18 @@ class GitHubSeachViewReactor: Reactor {
     }
     
     let initialState = State()
+    private let gitHubService: GitHubServiceType
+    
+    init(gitHubService: GitHubServiceType) {
+        self.gitHubService = gitHubService
+    }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .updateQuery(let query):
             return Observable.concat([
                 Observable.just(Mutation.setQuery(query)),
-                self.serach(query: query, page: 1)
+                self.gitHubService.serach(query: query, page: 1)
                     .takeUntil(self.action.filter(isUpdateQueryAction))
                     .map { Mutation.setRepos($0, nextPage: $1) }
             ])
@@ -46,7 +51,7 @@ class GitHubSeachViewReactor: Reactor {
             guard let page = self.currentState.nextPage else { return Observable.empty() }
             return Observable.concat([
                     Observable.just(Mutation.setLoadingNextPage(true)),
-                    self.serach(query: self.currentState.quary, page: page)
+                    self.gitHubService.serach(query: self.currentState.quary, page: page)
                         .takeUntil(self.action.filter(isUpdateQueryAction))
                         .map { Mutation.appendRepos($0, nextPage: $1) },
                     Observable.just(Mutation.setLoadingNextPage(false))
@@ -76,31 +81,7 @@ class GitHubSeachViewReactor: Reactor {
             return newState
         }
     }
-    
-    private func url(for query: String?, page: Int) -> URL? {
-        guard let query = query, !query.isEmpty else { return nil }
-        return URL(string: "https://api.github.com/search/repositories?q=\(query)&page=\(page)")
-    }
-    
-    private func serach(query: String?, page: Int) -> Observable<(repos: [String], nextPage: Int?)> {
-        let emptyResult: ([String], Int?) = ([], nil)
-        guard let url = self.url(for: query, page: page) else { return Observable.just(emptyResult) }
-        return URLSession.shared.rx.json(url: url)
-            .map { json -> ([String], Int?) in
-                guard let dict = json as? [String : Any] else { return emptyResult }
-                guard let items = dict["items"] as? [[String : Any]] else { return emptyResult }
-                let repos = items.flatMap { $0["full_name"] as? String}
-                let nextPage = repos.isEmpty ? nil : page + 1
-                return(repos, nextPage)
-            }
-            .do(onError: { error in
-                if case let .some(.httpRequestFailed(response, _)) = error as? RxCocoaURLError, response.statusCode == 403 {
-                    print("warning")
-                }
-            })
-            .catchErrorJustReturn(emptyResult)
-    }
-    
+
     private func isUpdateQueryAction(_ action: Action) -> Bool {
         if case .updateQuery = action {
             return true

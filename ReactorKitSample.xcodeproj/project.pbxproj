@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05274DE4203F238A0021648C /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05274DE3203F238A0021648C /* GitHubService.swift */; };
 		05D62646203D96C6009103AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D62645203D96C6009103AD /* AppDelegate.swift */; };
 		05D62648203D96C6009103AD /* GitHubSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D62647203D96C6009103AD /* GitHubSearchViewController.swift */; };
 		05D6264B203D96C6009103AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D62649203D96C6009103AD /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05274DE3203F238A0021648C /* GitHubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
 		05D62642203D96C5009103AD /* ReactorKitSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactorKitSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D62645203D96C6009103AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05D62647203D96C6009103AD /* GitHubSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearchViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				05D62645203D96C6009103AD /* AppDelegate.swift */,
 				05D62647203D96C6009103AD /* GitHubSearchViewController.swift */,
 				05D6267D203D9E59009103AD /* GitHubSeachViewReactor.swift */,
+				05274DE3203F238A0021648C /* GitHubService.swift */,
 				05D62649203D96C6009103AD /* Main.storyboard */,
 				05D6264C203D96C6009103AD /* Assets.xcassets */,
 				05D6264E203D96C6009103AD /* LaunchScreen.storyboard */,
@@ -309,6 +312,7 @@
 			files = (
 				05D62648203D96C6009103AD /* GitHubSearchViewController.swift in Sources */,
 				05D62646203D96C6009103AD /* AppDelegate.swift in Sources */,
+				05274DE4203F238A0021648C /* GitHubService.swift in Sources */,
 				05D6267E203D9E59009103AD /* GitHubSeachViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
