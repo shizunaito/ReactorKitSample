@@ -10,15 +10,16 @@ import XCTest
 @testable import ReactorKitSample
 
 class GitHubSeachViewReactorTest: XCTestCase {
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
     
     func testUpdateQuery() {
-        
+        let reactor = GitHubSeachViewReactor(gitHubService: MockGitHubService())
+        reactor.action.onNext(.updateQuery("aaa"))
+        XCTAssertEqual(reactor.currentState.quary, "aaa")
+    }
+    
+    func testLoadNextPage() {
+        let reactor = GitHubSeachViewReactor(gitHubService: MockGitHubService())
+        reactor.action.onNext(.loadNextPage)
+        XCTAssertEqual(reactor.currentState.isLoadingNextPage, false)
     }
 }

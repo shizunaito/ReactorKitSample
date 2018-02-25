@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0519FB4720425A3A00CCCBFE /* GitHubSearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0519FB4620425A3A00CCCBFE /* GitHubSearchViewControllerTests.swift */; };
+		0519FB492042641700CCCBFE /* MockGitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0519FB482042641700CCCBFE /* MockGitHubService.swift */; };
+		0519FB4C20426CA400CCCBFE /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0519FB4A20426AE500CCCBFE /* RxTest.framework */; };
+		0519FB4E20426CA400CCCBFE /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0519FB4D20426CA400CCCBFE /* RxBlocking.framework */; };
 		05274DE4203F238A0021648C /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05274DE3203F238A0021648C /* GitHubService.swift */; };
 		05986C0920424DB700803CA5 /* ReactorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D62675203D9AB1009103AD /* ReactorKit.framework */; };
 		05986C0A20424DB700803CA5 /* ReactorKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D62677203D9AB1009103AD /* ReactorKitRuntime.framework */; };
@@ -38,6 +41,9 @@
 
 /* Begin PBXFileReference section */
 		0519FB4620425A3A00CCCBFE /* GitHubSearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearchViewControllerTests.swift; sourceTree = "<group>"; };
+		0519FB482042641700CCCBFE /* MockGitHubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGitHubService.swift; sourceTree = "<group>"; };
+		0519FB4A20426AE500CCCBFE /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		0519FB4D20426CA400CCCBFE /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		05274DE3203F238A0021648C /* GitHubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
 		05986C0D2042504C00803CA5 /* GitHubSeachViewReactorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSeachViewReactorTest.swift; sourceTree = "<group>"; };
 		05D62642203D96C5009103AD /* ReactorKitSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactorKitSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0519FB4E20426CA400CCCBFE /* RxBlocking.framework in Frameworks */,
+				0519FB4C20426CA400CCCBFE /* RxTest.framework in Frameworks */,
 				05986C0920424DB700803CA5 /* ReactorKit.framework in Frameworks */,
 				05986C0A20424DB700803CA5 /* ReactorKitRuntime.framework in Frameworks */,
 				05986C0B20424DB700803CA5 /* RxSwift.framework in Frameworks */,
@@ -121,6 +129,7 @@
 			children = (
 				05986C0D2042504C00803CA5 /* GitHubSeachViewReactorTest.swift */,
 				0519FB4620425A3A00CCCBFE /* GitHubSearchViewControllerTests.swift */,
+				0519FB482042641700CCCBFE /* MockGitHubService.swift */,
 				05D6265C203D96C6009103AD /* Info.plist */,
 			);
 			path = ReactorKitSampleTests;
@@ -129,6 +138,8 @@
 		05D62673203D9AB1009103AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0519FB4D20426CA400CCCBFE /* RxBlocking.framework */,
+				0519FB4A20426AE500CCCBFE /* RxTest.framework */,
 				05D62675203D9AB1009103AD /* ReactorKit.framework */,
 				05D62677203D9AB1009103AD /* ReactorKitRuntime.framework */,
 				05D62676203D9AB1009103AD /* RxCocoa.framework */,
@@ -165,6 +176,7 @@
 				05D62652203D96C6009103AD /* Sources */,
 				05D62653203D96C6009103AD /* Frameworks */,
 				05D62654203D96C6009103AD /* Resources */,
+				0519FB4F20426CAA00CCCBFE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -237,6 +249,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0519FB4F20426CAA00CCCBFE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		05D6267C203D9ABC009103AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +301,7 @@
 			files = (
 				05986C0E2042504C00803CA5 /* GitHubSeachViewReactorTest.swift in Sources */,
 				0519FB4720425A3A00CCCBFE /* GitHubSearchViewControllerTests.swift in Sources */,
+				0519FB492042641700CCCBFE /* MockGitHubService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

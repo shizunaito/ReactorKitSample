@@ -25,7 +25,7 @@ class GitHubSearchViewControllerTests: XCTestCase {
     }
     
     func testState_repos() {
-        let reactor = GitHubSeachViewReactor(gitHubService: GitHubService())
+        let reactor = GitHubSeachViewReactor(gitHubService: MockGitHubService())
         reactor.stub.isEnabled = true
         
         viewController.reactor = reactor
