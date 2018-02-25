@@ -96,6 +96,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0572DF1E20428CD800B0E79A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				0572DF1C20428BBE00B0E79A /* SearchResponse.swift */,
+				0572DF1A20428A2000B0E79A /* Reqository.swift */,
+				0572DF18204289CC00B0E79A /* User.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		05D62639203D96C5009103AD = {
 			isa = PBXGroup;
 			children = (
@@ -122,9 +132,7 @@
 				05D62647203D96C6009103AD /* GitHubSearchViewController.swift */,
 				05D6267D203D9E59009103AD /* GitHubSeachViewReactor.swift */,
 				05274DE3203F238A0021648C /* GitHubService.swift */,
-				0572DF18204289CC00B0E79A /* User.swift */,
-				0572DF1A20428A2000B0E79A /* Reqository.swift */,
-				0572DF1C20428BBE00B0E79A /* SearchResponse.swift */,
+				0572DF1E20428CD800B0E79A /* Response */,
 				05D62649203D96C6009103AD /* Main.storyboard */,
 				05D6264C203D96C6009103AD /* Assets.xcassets */,
 				05D6264E203D96C6009103AD /* LaunchScreen.storyboard */,
