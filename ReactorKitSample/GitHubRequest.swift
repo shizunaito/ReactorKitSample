@@ -38,4 +38,13 @@ extension GitHubRequest {
         
         return urlRequest
     }
+    
+    func response(from data: Data, urlResponse: URLResponse) throws -> Response {
+        let decoder = JSONDecoder()
+        if case (200..<300)? = (urlResponse as? HTTPURLResponse)?.statusCode {
+            return try decoder.decode(Response.self, from: data)
+        } else {
+            throw try decoder.decode(GitHubAPIError.self, from: data)
+        }
+    }
 }
