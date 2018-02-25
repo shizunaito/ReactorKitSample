@@ -29,7 +29,7 @@
         <!--Git Hub Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GitHubSearchViewController" customModule="ReactorKitSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GitHubSearchViewController" id="BYZ-38-t0r" customClass="GitHubSearchViewController" customModule="ReactorKitSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,22 +44,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fkh-P4-vcc" id="2pr-bp-Cqp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWD-yh-8eS">
-                                                    <rect key="frame" x="15" y="11.5" width="345" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="w3d-UP-5pk"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="yWD-yh-8eS" secondAttribute="trailing" constant="15" id="5Hd-9m-3au"/>
-                                                <constraint firstItem="yWD-yh-8eS" firstAttribute="centerY" secondItem="2pr-bp-Cqp" secondAttribute="centerY" id="SHf-ga-sqw"/>
-                                                <constraint firstItem="yWD-yh-8eS" firstAttribute="leading" secondItem="2pr-bp-Cqp" secondAttribute="leading" constant="15" id="TWb-G2-dnM"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
