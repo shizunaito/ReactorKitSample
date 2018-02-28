@@ -38,10 +38,8 @@ final class GitHubService: GitHubServiceType {
             })
             .catchErrorJustReturn(emptyResult)
 
-        /*
-        let client = GitHubClient()
         let request = GitHubAPI.SearchRepositories(keyword: "aaa")
-        client.send(request: request) { result in
+        GitHubClient.send(request: request) { result in
             switch result {
             case let .success(response):
                 for item in response.items {
@@ -51,6 +49,5 @@ final class GitHubService: GitHubServiceType {
                 print(error)
             }
         }
-        */
     }
 }
