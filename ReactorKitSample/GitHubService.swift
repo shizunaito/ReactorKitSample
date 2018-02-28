@@ -37,5 +37,20 @@ final class GitHubService: GitHubServiceType {
                 }
             })
             .catchErrorJustReturn(emptyResult)
+
+        /*
+        let client = GitHubClient()
+        let request = GitHubAPI.SearchRepositories(keyword: "aaa")
+        client.send(request: request) { result in
+            switch result {
+            case let .success(response):
+                for item in response.items {
+                    print(item.owner.login)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+        */
     }
 }
