@@ -14,6 +14,8 @@ protocol GitHubServiceType {
 }
 
 final class GitHubService: GitHubServiceType {
+    
+    var disposeBag = DisposeBag()
 
     private func url(for query: String?, page: Int) -> URL? {
         guard let query = query, !query.isEmpty else { return nil }
@@ -21,6 +23,20 @@ final class GitHubService: GitHubServiceType {
     }
 
     func serach(query: String?, page: Int) -> Observable<(repos: [String], nextPage: Int?)> {
+        let request = GitHubAPI.SearchRepositories(keyword: "aaa")
+        GitHubClient.send(request: request)
+            .subscribe { observer in
+                switch observer {
+                case let .success(response):
+                    for item in response.items {
+                        print(item.fullName)
+                    }
+                case let .error(error):
+                    print(error)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         let emptyResult: ([String], Int?) = ([], nil)
         guard let url = self.url(for: query, page: page) else { return Observable.just(emptyResult) }
         return URLSession.shared.rx.json(url: url)
@@ -37,17 +53,5 @@ final class GitHubService: GitHubServiceType {
                 }
             })
             .catchErrorJustReturn(emptyResult)
-
-        let request = GitHubAPI.SearchRepositories(keyword: "aaa")
-        GitHubClient.send(request: request) { result in
-            switch result {
-            case let .success(response):
-                for item in response.items {
-                    print(item.owner.login)
-                }
-            case let .failure(error):
-                print(error)
-            }
-        }
     }
 }
